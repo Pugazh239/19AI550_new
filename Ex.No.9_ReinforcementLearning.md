@@ -1,6 +1,6 @@
 # Ex.No: 9  Implementation of RollarBall Design using Reinforcement Learning 
-### DATE:                                                                            
-### REGISTER NUMBER : 
+### DATE:  27/08/2026                                                                               
+### REGISTER NUMBER : 212224240121
 ### AIM: 
 To write a program to design RollerBall and train the Rollerbal by Reinforcement learning  in Unity 
 ### Installation Required 
@@ -37,7 +37,6 @@ mlagents-learn --help
     Addcomponent->ML Agents -> Behavior Parameters and set the follwing 
     Behavior Name: RollerBallBehavior
     Vector Observation: 8 (4 for agent pos + 3 for target pos + 1 for velocity), 
-    Action Space: Continuous (2)
 12. Add the Decision requestor
  Addcomponent->ML Agents -> Decision Requestor ->set decision period 5 
 13. In command prompt, Run the command to start ML agents to learn the Unity 
@@ -56,7 +55,6 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
-
 public class RollerAgent : Agent
 {
     public Rigidbody rBody;
@@ -79,7 +77,6 @@ public class RollerAgent : Agent
         float range = 3.0f;
         targetTransform.localPosition = new Vector3(Random.Range(-range, range), 0.5f, Random.Range(-range, range));
     }
-
     public override void CollectObservations(VectorSensor sensor)
     {
         // Target position (3 floats)
@@ -105,8 +102,7 @@ public class RollerAgent : Agent
 
         // Reward shaping
         float distanceToTarget = Vector3.Distance(transform.localPosition, targetTransform.localPosition);
-
-        // If agent reaches target -> give reward and end episode
+    // If agent reaches target -> give reward and end episode
         if (distanceToTarget < 1.5f)
         {
             SetReward(1.0f);
@@ -140,7 +136,7 @@ behaviors:
     trainer_type: ppo
     hyperparameters:
       batch_size: 1024
-      buffer_size: 10240
+  buffer_size: 10240
       learning_rate: 3.0e-4
       beta: 5.0e-3
       epsilon: 0.2
@@ -157,15 +153,16 @@ behaviors:
     max_steps: 500000
     time_horizon: 64
     summary_freq: 10000
+```
 ### Output:
 
-
-
-
-
-
-
-
+<img width="1642" height="878" alt="image" src="https://github.com/user-attachments/assets/b68c18d4-a90d-4261-acf5-e83443e453cb" />
+<img width="1642" height="837" alt="image" src="https://github.com/user-attachments/assets/99412d80-1e88-461e-852e-f77a99e841cb" />
+<img width="1642" height="867" alt="image" src="https://github.com/user-attachments/assets/a33f0d1f-b3d1-4c0d-a21f-d1f19d5d8cbf" />
 
 ### Result:
 Thus the AI character was trained using reinforcement learning.
+
+
+
+
